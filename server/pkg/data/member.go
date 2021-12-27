@@ -40,6 +40,7 @@ func GetMembers() Members {
 
 func AddMember(m *Member) {
 	m.Id = getNextID()
+	m.RegistrationDate = time.Now()
 	memberList = append(memberList, m)
 }
 
@@ -62,21 +63,26 @@ func validateEmailUniq(fl validator.FieldLevel) bool {
 }
 
 func getNextID() int {
-	lm := memberList[len(memberList)-1]
-	return lm.Id + 1
+	if len(memberList) > 0 {
+		lm := memberList[len(memberList)-1]
+		return lm.Id + 1
+	} else {
+		return 1
+	}
 }
 
 var memberList = []*Member{
-	{
-		Id:               1,
-		Name:             "Tom",
-		Email:            "tomriddle@gmail.com",
-		RegistrationDate: time.Now(),
-	},
-	{
-		Id:               2,
-		Name:             "Harry",
-		Email:            "potter@gmail.com",
-		RegistrationDate: time.Now(),
-	},
+	// TODO: use this code for debug
+	// {
+	// 	Id:               1,
+	// 	Name:             "Tom",
+	// 	Email:            "tomriddle@gmail.com",
+	// 	RegistrationDate: time.Now(),
+	// },
+	// {
+	// 	Id:               2,
+	// 	Name:             "Harry",
+	// 	Email:            "potter@gmail.com",
+	// 	RegistrationDate: time.Now(),
+	// },
 }
