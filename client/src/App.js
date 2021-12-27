@@ -7,6 +7,8 @@ import './App.css';
 import { Form } from './components/Form/Form';
 import { Table } from './components/Table/Table';
 
+const API = "https://memberclub2.herokuapp.com";
+
 export function App() {
   const [members, setMembers] = React.useState([]);
   const [loadingForm, setLoadingForm] = React.useState(false);
@@ -15,7 +17,7 @@ export function App() {
   function getAllMembers({ withScroll } = {}) {
     setLoadingTable(true);
     (async () => {
-      const data = await fetch('http://localhost:4000').then((res) =>
+      const data = await fetch(API).then((res) =>
         res.json()
       );
       setLoadingTable(false);
@@ -31,7 +33,7 @@ export function App() {
     setLoadingForm(true);
     (async () => {
       try {
-        const status = await fetch('http://localhost:4000', {
+        const status = await fetch(API, {
           method: 'POST',
           body: JSON.stringify({
             name: name.trim(),

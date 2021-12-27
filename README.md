@@ -8,4 +8,5 @@ Languages: Golang, JavaScript
 
 ## Demo
 
-[Link](https://mali3days.github.io/memberclub/)
+[Client](https://mali3days.github.io/memberclub/)
+[Server](https://memberclub2.herokuapp.com/)
